@@ -1,5 +1,7 @@
 //! Cli Arguments Parsing
 
+use std::net::IpAddr;
+
 use clap::{Args, Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
 
@@ -22,7 +24,7 @@ pub enum Command {
 #[derive(Debug, Args)]
 pub struct StartArgs {
     #[arg(long)]
-    pub ip: String,
+    pub ip: IpAddr,
     #[arg(long)]
-    pub port: u32,
+    pub port: u16,
 }

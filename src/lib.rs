@@ -1,3 +1,5 @@
+use std::net::IpAddr;
+
 use anyhow::{bail, Result};
 use cli::Command;
 use tokio::{
@@ -18,7 +20,7 @@ pub async fn run(command: Command) -> Result<()> {
     Ok(())
 }
 
-async fn run_start(ip_addr: String, port: u32) -> Result<()> {
+async fn run_start(ip_addr: IpAddr, port: u16) -> Result<()> {
     let listener = TcpListener::bind(format!("{ip_addr}:{port}")).await?;
 
     loop {
