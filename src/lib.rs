@@ -1,5 +1,3 @@
-use std::net::Shutdown;
-
 use anyhow::{bail, Result};
 use cli::Command;
 use tokio::{
@@ -15,13 +13,13 @@ pub mod errors;
 #[cfg(not(tarpaulin_include))]
 pub async fn run(command: Command) -> Result<()> {
     match command {
-        Command::Start => run_start().await?,
+        Command::Start(args) => run_start(args.ip, args.port).await?,
     }
     Ok(())
 }
 
-async fn run_start() -> Result<()> {
-    let listener = TcpListener::bind("127.0.0.1:7878").await?;
+async fn run_start(ip_addr: String, port: u32) -> Result<()> {
+    let listener = TcpListener::bind(format!("{ip_addr}:{port}")).await?;
 
     loop {
         let stream = listener.accept().await?;
@@ -35,6 +33,8 @@ async fn run_start() -> Result<()> {
             };
         });
     }
+}
+
     Ok(())
 }
 

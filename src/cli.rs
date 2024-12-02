@@ -1,6 +1,6 @@
 //! Cli Arguments Parsing
 
-use clap::{Parser, Subcommand};
+use clap::{Args, Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
 
 /// Cli arguments
@@ -16,5 +16,13 @@ pub struct CliArgs {
 
 #[derive(Subcommand, Debug)]
 pub enum Command {
-    Start,
+    Start(StartArgs),
+}
+
+#[derive(Debug, Args)]
+pub struct StartArgs {
+    #[arg(long)]
+    pub ip: String,
+    #[arg(long)]
+    pub port: u32,
 }
