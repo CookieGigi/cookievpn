@@ -23,7 +23,7 @@ pub enum Command {
 
 #[derive(Debug, Args)]
 pub struct StartArgs {
-    #[arg(long)]
+    #[arg(long, default_value("0.0.0.0"))]
     pub ip: IpAddr,
     #[arg(long)]
     pub port: u16,
