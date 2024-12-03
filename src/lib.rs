@@ -37,9 +37,6 @@ async fn run_start(ip_addr: IpAddr, port: u16) -> Result<()> {
     }
 }
 
-    Ok(())
-}
-
 #[tracing::instrument]
 async fn handle_connection(mut stream: TcpStream, id: Uuid) -> Result<()> {
     tracing::info!("Connection established!");
