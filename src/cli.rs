@@ -18,11 +18,11 @@ pub struct CliArgs {
 
 #[derive(Subcommand, Debug)]
 pub enum Command {
-    Start(StartArgs),
+    TCPEcho(TCPEchoArgs),
 }
 
 #[derive(Debug, Args)]
-pub struct StartArgs {
+pub struct TCPEchoArgs {
     #[arg(long, default_value("0.0.0.0"))]
     pub ip: IpAddr,
     #[arg(long)]
