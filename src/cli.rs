@@ -19,6 +19,7 @@ pub struct CliArgs {
 #[derive(Subcommand, Debug)]
 pub enum Command {
     TCPEcho(TCPEchoArgs),
+    ListenTUN(ListenTUNArgs),
 }
 
 #[derive(Debug, Args)]
@@ -28,3 +29,6 @@ pub struct TCPEchoArgs {
     #[arg(long)]
     pub port: u16,
 }
+
+#[derive(Debug, Args)]
+pub struct ListenTUNArgs {}
