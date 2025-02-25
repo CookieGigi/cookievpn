@@ -31,4 +31,13 @@ pub struct TCPEchoArgs {
 }
 
 #[derive(Debug, Args)]
-pub struct ListenTUNArgs {}
+pub struct ListenTUNArgs {
+    #[arg(long)]
+    pub src: IpAddr,
+    #[arg(long, default_value("tun0"))]
+    pub name: String,
+    #[arg(long, default_value("255.255.255.0"))]
+    pub netmask: IpAddr,
+    #[arg(long)]
+    pub dest: IpAddr,
+}
